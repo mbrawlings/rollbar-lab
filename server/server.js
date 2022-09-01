@@ -16,9 +16,12 @@ var rollbar = new Rollbar({
   captureUncaught: true,
   captureUnhandledRejections: true,
 })
-
 // record a generic message and send it to Rollbar
 rollbar.log('Hello world!')
+
+app.get('/', (req, res) => {
+    res.sendFile(path(join(__dirname, '../client/index.html')))
+})
 
 app.listen(PORT, () => {
     `Server listening on port ${PORT}`
