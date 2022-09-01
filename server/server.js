@@ -23,12 +23,12 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/index.html'))
 })
 
-// app.get('/chicken', (req, res) => {
+app.get('/chicken', (req, res) => {
     try {chicken}
         catch (error) {
             console.error('that is not a function')
         }
-// })
+})
 
 // try {
 //     throw new Error('oops');
