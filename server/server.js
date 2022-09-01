@@ -23,11 +23,18 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/index.html'))
 })
 
+app.get('/js', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/index.js'))
+})
+
 app.get('/chicken', (req, res) => {
-    try {chicken}
-        catch (error) {
-            console.error('that is not a function')
-        }
+    try {
+        chicken()
+    }
+    catch (someMessage) {
+        console.log('this is the error that got caught')
+        console.log(someMessage)
+    }
 })
 
 // try {
