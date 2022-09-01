@@ -27,23 +27,24 @@ app.get('/js', (req, res) => {
     res.sendFile(path.join(__dirname, '../client/index.js'))
 })
 
+app.get('/css', (req, res) => {
+    res.sendFile(path.join(__dirname, '../client/styles.css'))
+})
+
 app.get('/chicken', (req, res) => {
     try {
         chicken()
     }
-    catch (someMessage) {
-        console.log('this is the error that got caught')
-        console.log(someMessage)
+    catch (error) {
+        rollbar.error(error)
     }
+    res.send('hey')
 })
 
-// try {
-//     throw new Error('oops');
-//   } catch (ex) {
-//     console.error('inner', ex.message);
-//   } finally {
-//     console.log('finally');
-//   }
+app.get('/dontPress', (req,res) => {
+    console.log('pressed it')
+    res.send('pressed it')
+})
 
 app.listen(PORT, () => {
     `Server listening on port ${PORT}`
